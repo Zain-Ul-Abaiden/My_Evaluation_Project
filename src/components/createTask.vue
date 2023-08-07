@@ -1,6 +1,6 @@
 <template>
    <MainNavbar />
-    <form>
+    <form class="border-2">
         <label for="id">ID</label>
         <input type="number" placeholder="Enter id here" v-model="form.id">
 
@@ -9,10 +9,11 @@
 
         <label for="discription">Discription</label>
         <input type="text" placeholder="Enter discription here" v-model="form.discription">
+
+        <div class="submit">
+            <button type="submit" @click="create(form)">Submit</button>
+        </div>
     </form>
-    <div class="submit">
-        <button type="submit" @click="create(form)">Submit</button>
-    </div>
 </template>
 
 <script>;
@@ -48,10 +49,10 @@ form {
   border-radius: 10px;
 }
 label {
-  color: #aaa;
+  color: black;
   display: inline-block;
   margin: 25px 0 15px;
-  font-size: 0.6em;
+  font-size: 0.8em;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
@@ -61,8 +62,7 @@ input {
   padding: 10px 6px;
   width: 100%;
   box-sizing: border-box;
-  border: none;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
   color: #555;
 }
 button {
@@ -77,7 +77,7 @@ button {
 .submit {
   text-align: center;
   margin: 25px 0 15px;
-  margin-left: 100px;
+  margin-left: 20px;
 }
 
 </style>

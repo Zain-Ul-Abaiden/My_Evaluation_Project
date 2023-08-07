@@ -1,6 +1,6 @@
 <template>
    <div class="mt-5"><h1 class="text-2xl text-indigo-700 font-bold cursor-pointer">Welcome to Signup Page</h1></div>
-  <form @submit.prevent="handleSubmit">
+  <form class="border-2" @submit.prevent="handleSubmit">
     <label>Name:</label>
     <input type="text" placeholder="Enter name here" required v-model="name" />
     <div v-if="nameError" class="error">{{ nameError }}</div>
@@ -31,10 +31,10 @@
     />
     <div v-if="passwordMatchError" class="error">{{ passwordMatchError }}</div>
 
+    <div class="submit">
+      <button type="submit">Create an Account</button>
+    </div>
 </form>
-<div class="submit">
-  <button type="submit">Create an Account</button>
-</div>
 </template>
 
 <script>
@@ -119,29 +119,28 @@ export default {
 
 <style scoped>
 form {
-  max-width: 420px;
-  margin: 30px auto;
+  max-width: 500px;
+  margin: 25px auto;
   background: white;
   text-align: left;
-  padding: 40px;
+  padding: 30px;
   border-radius: 10px;
 }
 label {
-  color: #aaa;
+  color: black;
   display: inline-block;
   margin: 25px 0 15px;
-  font-size: 0.6em;
+  font-size: 0.8em;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
 }
 input {
   display: block;
-  padding: 10px 6px;
+  padding: 10px 20px;
   width: 100%;
   box-sizing: border-box;
-  border: none;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
   color: #555;
 }
 button {

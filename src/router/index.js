@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Signup from '../components/signup.vue'
-import Navbar from '../components/navbar.vue'
+import HeroComponent from '../components/heroComponent.vue'
 import CreateTask from '../components/createTask.vue'
 import DeleteTask from '../components/deleteTask.vue'
 import ListTask from '../components/listTask.vue'
-import Tasks from '../components/tasks.vue'
 
 const routes = [
   {
@@ -19,9 +18,9 @@ const routes = [
     component: Signup
   },
   {
-    path: '/navbar',
-    name: 'navbar',
-    component: Navbar
+    path: '/heroComponent',
+    name: 'heroComponent',
+    component: HeroComponent
   },
   {
     path: '/createTask',

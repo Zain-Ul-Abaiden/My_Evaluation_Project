@@ -8,7 +8,7 @@ import MainNavbar from './mainNavbar.vue';
 import Tasks from './tasks.vue';
 
     export default {
-    name: 'Navbar',
+    name: 'HeroComponent',
     components: { Tasks, MainNavbar }
 }
 </script>

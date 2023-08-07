@@ -1,8 +1,8 @@
 <template>
   <div class="mt-10"><h1 class="text-2xl text-indigo-700 font-bold cursor-pointer">Welcome to Login Page</h1></div>
-    <form @submit.prevent="handleLogin">
+    <form class="border-2" @submit.prevent="handleLogin">
       <label>Email: </label>
-      <input
+      <input 
         type="text"
         placeholder="Enter email here"
         required
@@ -21,13 +21,13 @@
       <br />
       <br />
 
+      <div class="login">
+        <v-btn class="btn1" type="submit">Login</v-btn>
+        <router-link to="/signup">
+          <v-btn class="btn2">Sign Up</v-btn>
+        </router-link>
+      </div>
     </form>
-    <div class="login">
-      <v-btn class="btn1" type="submit">Login</v-btn>
-      <router-link to="/signup">
-        <v-btn class="btn2">Sign Up</v-btn>
-      </router-link>
-    </div>
   </template>
   
   <script>
@@ -47,11 +47,12 @@
         // Retrieve stored email and password from local storage
         const storedEmail = localStorage.getItem("email");
         const storedPassword = localStorage.getItem("password");
-        alert("Login Successfull")
+        
   
         // Check if the entered email and password match the stored values
         if (this.email === storedEmail && this.password === storedPassword) {
-          this.$router.push('/navbar');
+          alert("Login Successfull")
+          this.$router.push('/heroComponent');
         } else {
           this.error = "Invalid email or password. Please try again.";
         }
@@ -71,21 +72,20 @@
     border-radius: 10px;
   }
   label {
-    color: #aaa;
+    color: black;
     display: inline-block;
     margin: 25px 0 15px;
-    font-size: 0.6em;
+    font-size: 0.8em;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: bold;
   }
   input {
-    display: block;
+    display: black;
     padding: 10px 6px;
     width: 100%;
     box-sizing: border-box;
-    border: none;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd;
     color: #555;
   }
   button {

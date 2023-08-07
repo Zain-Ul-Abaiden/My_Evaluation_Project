@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-5 h-80">
+    <div class="mt-5 h-80 justify-content">
         <div class="mt-20">
             <router-link to="/createTask">
                 <button>Task Creation</button>
