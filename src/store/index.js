@@ -1,32 +1,43 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    tasks:''
+    tasks: [],
+    allTasks: [],
   },
   mutations: {
     SET_TASKS(state, payload) {
-      state.tasks = payload
-      
-    }
+      state.tasks = payload;
+    },
+
   },
   actions: {
-    async createTask(_,payload) {
-      const response = await localStorage.setItem(`${payload.id}`,`Title: ${payload.title} Discription: ${payload.discription}`)
-      console.log(response)
+    createTask(_, payload) {
+      localStorage.setItem(
+        `${payload.id}`,
+        `Title: ${payload.title} Discription: ${payload.discription}`
+      );
+      this.state.allTasks.push({ 'title':payload.title , 'discription':payload.discription });
     },
-    async readTasks({commit},id) {
-      const response = await localStorage.getItem(`${id}`)
-      commit('SET_TASKS',response)
+    readTasks({ commit }, id) {
+      const response = localStorage.getItem(id);
+      commit("SET_TASKS", response);
     },
-    async deleteTask( _,id) {
-      await localStorage.removeItem(`${id}`)
-      
+    deleteTask(_, id) {
+      localStorage.removeItem(`${id}`);
+    },
+    updateTask(_,{id,payload}) {
+      this.state.allTasks[id]=payload
     }
+ 
+  
   },
   getters: {
     getTasksList(state) {
-      return state.tasks
-    }
+      return state.tasks;
+    },
+    getAllTasks(state) {
+      return state.allTasks;
+    },
   },
-})
+});

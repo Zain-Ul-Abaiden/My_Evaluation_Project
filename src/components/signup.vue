@@ -91,26 +91,14 @@ export default {
       localStorage.setItem("email", this.email);
       localStorage.setItem("password", this.password);
 
-      alert("Signup successful!");
       // If all validations pass,then move form submission to homepage
       if (
         this.nameError === "" &&
         this.passwordError === "" &&
         this.passwordMatchError === ""
-      ) {
+        ) {
+        alert("Signup successful!");
         this.$router.push("/");
-      }
-    },
-
-    created() {
-      // Retrieve email from local storage when the component is created
-      const storedEmail = localStorage.getItem("email");
-      if (storedEmail) {
-        this.email = storedEmail;
-      }
-      const storedPassword = localStorage.getItem("password");
-      if (storedPassword) {
-        this.password = storedPassword;
       }
     },
   },

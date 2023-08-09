@@ -1,10 +1,10 @@
 <template>
     <MainNavbar />
-      <form class="border-2">
+      <form @click.prevent="read(id)" class="border-2">
         <label for="id">ID</label>
         <input type="number" placeholder="Enter id here" v-model="id">
 
-        <button type="submit" @click="read(id)">Submit</button>
+        <button type="submit" >Submit</button>
     </form>
         <li class="list-none">
             <p>{{ getTask }}</p>
@@ -17,7 +17,7 @@
 import MainNavbar from './mainNavbar.vue';
   
   export default {
-    name: 'listTask',
+    name: 'TaskByID',
     data() {
         return {
             id: null

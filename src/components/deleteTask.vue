@@ -1,10 +1,10 @@
 <template>
     <MainNavbar />
-    <form class="border-2">
+    <form @submit.prevent="deleteTaskById(id)" class="border-2">
         <label for="id">ID</label>
         <input type="number" placeholder="Enter id here" v-model="id">
 
-        <button type="submit" @click="deleteTaskById(id)">Submit</button>
+        <button type="submit" >Submit</button>
     </form>
 </template>
 

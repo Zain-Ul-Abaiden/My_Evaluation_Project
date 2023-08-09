@@ -1,6 +1,6 @@
 <template>
    <MainNavbar />
-    <form class="border-2">
+    <form @submit.prevent="create(this.form)" class="border-2">
         <label for="id">ID</label>
         <input type="number" placeholder="Enter id here" v-model="form.id">
 
@@ -10,8 +10,8 @@
         <label for="discription">Discription</label>
         <input type="text" placeholder="Enter discription here" v-model="form.discription">
 
-        <div class="submit">
-            <button type="submit" @click="create(form)">Submit</button>
+        <div class="submit" >
+            <button type="submit" >Add Task</button>
         </div>
     </form>
 </template>
@@ -19,8 +19,9 @@
 <script>;
 import { mapActions } from 'vuex';
 import MainNavbar from './mainNavbar.vue';
-    export default {
-    name: 'CreateTask',
+export default {
+  name: 'CreateTask',
+  components: { MainNavbar },
     data() {
         return {
             form: {
@@ -28,12 +29,13 @@ import MainNavbar from './mainNavbar.vue';
                 title: null,
                 discription: null
             }
+            
         };
     },
     methods: {
         ...mapActions({ create: 'createTask' })
-    },
-    components: { MainNavbar }
+      },
+    
 }
 
     
