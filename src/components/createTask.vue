@@ -1,14 +1,15 @@
 <template>
    <MainNavbar />
     <form @submit.prevent="create(this.form)" class="border-2">
-        <label for="id">ID</label>
-        <input type="number" placeholder="Enter id here" v-model="form.id">
-
-        <label for="title">Title</label>
-        <input type="text" placeholder="Enter title here" v-model="form.title">
-
-        <label for="discription">Discription</label>
-        <input type="text" placeholder="Enter discription here" v-model="form.discription">
+      
+      <label for="title">Title</label>
+      <input type="text" placeholder="Enter title here" required v-model="form.title">
+      
+      <label for="description">Description</label>
+      <textarea class="textarea" type="text" placeholder="Enter description here" v-model="form.description"></textarea>
+      
+      <label for="price">Price</label>
+      <input type="number" placeholder="Enter price here" v-model="form.price">
 
         <div class="submit" >
             <button type="submit" >Add Task</button>
@@ -25,9 +26,9 @@ export default {
     data() {
         return {
             form: {
-                id: null,
+                price: null,
                 title: null,
-                discription: null
+                description: null
             }
             
         };
@@ -60,6 +61,14 @@ label {
   font-weight: bold;
 }
 input {
+  display: block;
+  padding: 10px 6px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  color: #555;
+}
+textarea {
   display: block;
   padding: 10px 6px;
   width: 100%;

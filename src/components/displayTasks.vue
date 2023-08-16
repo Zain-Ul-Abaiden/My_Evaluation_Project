@@ -3,51 +3,44 @@
     <div class="mt-10">
       <h1 class="text-2xl text-indigo-700 font-bold cursor-pointer">Your Tasks</h1>
     </div>
-    <ul class="flex border-2 p-4 m-4 justify-between" v-for="(item, index) in displayAllTask" :key="index">
-      <div>
-        <li>
+    <ul class="flex border-2 p-4 m-4 justify-between" >
+      <div class="">
+        <li class="" v-for="(item, index) in displayAllTask" :key="index">
           <p class="text-xl">Title: {{ item.title }}</p>
-          <p class="text-xl">Discription: {{ item.discription }}</p>
+          <p class="text-xl">Dscription: {{ item.description }}</p>
+          <p class="text-xl">Price: {{ item.price }}</p>
+          Index: {{ index }}
+          
+          <UpdateTask :prevTasks="item" :indx="index"></UpdateTask>
+          <!-- <div class=""> -->
+             <button class="mx-5 bg-blue-500" @click="addToCart(index)">Add to Cart</button>
+             <button class="mx-5 bg-blue-500" @click="navigateToUpdateTask(index)">Edit</button>
+             <button class="bg-red-500" @click="deleteTask(index)">Delete</button>
+           <!-- </div> -->
         </li>
-      </div>
-      <div class="flex justify-left">
-        <select v-model="item.selectedStatus" class="status-select">
-          <option
-            v-for="(statusOption, statusIndex) in status"
-            :key="statusIndex"
-            :value="statusOption.name"
-          >
-            {{ statusOption.name }}
-          </option>
-        </select>
-       <label> Completion Status: </label>
-        <p :style="{ color: status.find(s => s.name === item.selectedStatus)?.color }">
 
-           {{ item.selectedStatus }}
-        </p>
-    </div>
-    <button @click="updateTasks(index)">Edit</button>
-    <button @click="deleteTask(index)">Delete</button>
+      </div>
+
     </ul>
   </template>
   
   <script>
   import { mapGetters, mapActions } from 'vuex';
-  import MainNavbar from './mainNavbar.vue';
+ import MainNavbar from './mainNavbar.vue'
+ import UpdateTask from './updateTask.vue'
   
   export default {
     name: 'DisplayTasks',
-    components: { MainNavbar },
+    components: { MainNavbar, UpdateTask },
     data() {
       return {
-        status: [
-          { name: 'In-Progress', color: 'blue' },
-          { name: 'Completed', color: 'green' },
-          { name: 'Pending', color: 'red' }
-        ],
-        selectedStatus: 'In-Progress',
-      };
+        prevTasks: '',
+        indx: '',
+        updatedTasks: null
+      }
     },
+
+
     computed: {
       ...mapGetters({ displayAllTask: 'getAllTasks' })
     },
@@ -55,14 +48,21 @@
       deleteTask(id) {
         this.displayAllTask.splice(id, 1);
       },
-      ...mapActions({ updateTasks: 'updateTask' })
+      ...mapActions({addCart:'addToCart'}),
+      ...mapActions({ updatedTasks: 'updateTask' }),
+
+      navigateToUpdateTask() {
+      this.$router.push("/updateTask");
+    },
+        addToCart(index){
+          this.addCart(index)
+        }
     }
   };
   </script>
   
   <style scoped>
   button {
-    background: red;
     border: 0;
     padding: 10px 20px;
     margin-top: 10px;
@@ -70,11 +70,9 @@
     border-radius: 20px;
   }
   .status-select {
-    background: #0b6dff;
-    border: 0;
+    border: 2;
     padding: 10px 20px;
     margin-top: 10px;
-    color: white;
     border-radius: 20px;
   }
   </style>

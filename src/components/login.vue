@@ -21,12 +21,12 @@
       <br />
       <br />
 
-      <div class="login">
-        <v-btn class="btn1" type="submit">Login</v-btn>
-        <router-link to="/signup">
-          <v-btn class="btn2">Sign Up</v-btn>
-        </router-link>
+      <div class="flex justify-center">
+        <v-btn class="bg-blue-500 text-white" type="submit">Login</v-btn>
       </div>
+      <router-link class="flex justify-center" to="/signup">
+        <v-btn class="">Create New Account</v-btn>
+      </router-link>
     </form>
   </template>
   
@@ -89,22 +89,10 @@
     color: #555;
   }
   button {
-    background: #0b6dff;
     border: 0;
     padding: 10px 20px;
     margin-top: 20px;
-    color: white;
     border-radius: 20px;
-  }
-  .login {
-    text-align: center;
-  }
-  
-  .btn1 {
-    margin-right: 50px;
-  }
-  .btn2 {
-    margin-left: 50px;
   }
   
   .error {

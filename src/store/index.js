@@ -4,40 +4,44 @@ export default createStore({
   state: {
     tasks: [],
     allTasks: [],
+    cart: [],
   },
   mutations: {
     SET_TASKS(state, payload) {
       state.tasks = payload;
     },
-
+    UPDATE_TASK(state, { id, payload }) {
+      state.allTasks.splice(id, 1, payload);
+    },
+    ADD_TO_CART(state, id) {
+      state.cart.push(state.allTasks[id]);
+    }
   },
   actions: {
     createTask(_, payload) {
-      localStorage.setItem(
-        `${payload.id}`,
-        `Title: ${payload.title} Discription: ${payload.discription}`
-      );
-      this.state.allTasks.push({ 'title':payload.title , 'discription':payload.discription });
-    },
-    readTasks({ commit }, id) {
-      const response = localStorage.getItem(id);
-      commit("SET_TASKS", response);
-    },
-    deleteTask(_, id) {
-      localStorage.removeItem(`${id}`);
+      // localStorage.setItem(
+      //   `${payload.price}`,
+      //   `Title: ${payload.title} Description: ${payload.description} Price: ${payload.price}`
+      // );
+
+      this.state.allTasks.push({ 'title':payload.title , 'description':payload.description , 'price':payload.price  });
     },
     updateTask(_,{id,payload}) {
-      this.state.allTasks[id]=payload
+      console.log('in action---->', id,"DATA--->", payload)
+      this.state.allTasks.splice(id,1,payload)
+    },
+    addToCart(_,id) {
+      this.state.cart.push(this.state.allTasks[id])
     }
  
   
   },
   getters: {
-    getTasksList(state) {
-      return state.tasks;
-    },
     getAllTasks(state) {
       return state.allTasks;
+    },
+    getAllCart(state) {
+      return state.cart
     },
   },
 });

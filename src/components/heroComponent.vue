@@ -7,13 +7,8 @@
             </router-link>
         </div>
         <div class="mt-5">
-            <router-link to="/deleteTask">
+            <router-link to="/displayTasks">
                 <button>Task Deletion</button>
-            </router-link>
-        </div>
-        <div class="mt-5">
-            <router-link to="/taskByID">
-                <button>Search by ID</button>
             </router-link>
         </div>
         <div class="mt-5">
@@ -36,7 +31,7 @@ import MainNavbar from './mainNavbar.vue';
 
 <style scoped>
   button {
-    background: #0b6dff;
+    background: #0b6Dff;
     border: 0;
     padding: 10px 20px;
     margin-top: 10px;

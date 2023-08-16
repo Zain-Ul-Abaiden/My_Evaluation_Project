@@ -31,8 +31,11 @@
     />
     <div v-if="passwordMatchError" class="error">{{ passwordMatchError }}</div>
 
-    <div class="submit">
-      <button type="submit">Create an Account</button>
+    <div class="flex justify-between mt-5">
+      <router-link to="/">
+          <v-btn class="mx-5">Back</v-btn>
+        </router-link>
+      <v-btn class=" bg-blue-500 text-white mx-5 " type="submit">Sign Up</v-btn>
     </div>
 </form>
 </template>
@@ -132,17 +135,10 @@ input {
   color: #555;
 }
 button {
-  background: #0b6dff;
   border: 0;
   padding: 10px 20px;
   margin-top: 10px;
-  color: white;
   border-radius: 20px;
-}
-.submit {
-  text-align: center;
-  margin: 25px 0 15px;
-  margin-left: 100px;
 }
 .error {
   color: #ff0062;
@@ -150,4 +146,5 @@ button {
   font-size: 0.8em;
   font-weight: bold;
 }
+
 </style>

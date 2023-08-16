@@ -4,9 +4,9 @@ import Signup from '../components/signup.vue'
 import MainNavbar from '../components/mainNavbar.vue'
 import HeroComponent from '../components/heroComponent.vue'
 import CreateTask from '../components/createTask.vue'
-import DeleteTask from '../components/deleteTask.vue'
-import TaskByID from '../components/taskByID.vue'
 import DisplayTasks from '../components/displayTasks.vue'
+import UpdateTask from '../components/updateTask.vue'
+
 const routes = [
   {
     path: '/',
@@ -34,20 +34,16 @@ const routes = [
     component: CreateTask
   },
   {
-    path: '/deleteTask',
-    name: 'deleteTask',
-    component: DeleteTask
-  },
-  {
-    path: '/taskByID',
-    name: 'taskByID',
-    component: TaskByID
-  },
-  {
     path: '/displayTasks',
     name: 'displayTasks',
     component: DisplayTasks
   },
+  {
+    path: '/updateTask',
+    name: 'updateTask',
+    component: UpdateTask
+  }
+
 
 ]
 
